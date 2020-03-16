@@ -9,9 +9,14 @@ function Games() {
         const fetchData = async () => {
             const result = await api.get('https://api.twitch.tv/helix/games/top');
             // console.log(result.data);
-            setGames(result.data.data)
+            let dataArray = result.data.data
+            let finalArray = dataArray.map(game => {
+            let newURL = game.box_art_url.replace('{width}', '300').replace('{height}', '300');
+                game.box_art_url = newURL
+            })
+            setGames(result.data.data);
         };
-        fetchData()
+        fetchData();
     });
     return (
         <div>
