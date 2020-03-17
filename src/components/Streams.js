@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../api';
 
 function Stream() {
-    const [channels, setChannels] = useState([])
+    const [channels, setChannels] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             const result = await api.get("https://api.twitch.tv/helix/streams")
@@ -23,18 +23,54 @@ function Stream() {
             let gameNameArray = gameNames.data.data;
 
             let finalArray = dataArray.map(stream => {
-                stream.gameName = ''
+                stream.gameName = "";
                 gameNameArray.map(name => {
                     if(stream.game_id === name.id) {
-                        return stream.gameName = name.name
+                        return (stream.gameName = name.name);
                     }
-                })
-                
-            })
+                });
+                let newURL = stream.thumbnail_url
+            .replace("{width}", "300")
+            .replace("{height}", "300");
+            stream.thumbnail_url = newURL;
+            return stream;
+            });
+            setChannels(finalArray);
         }
         fetchData();
-    });
-    return <div>streams component</div>
+    }, []);
+
+    return (
+        <div>
+            <h1>Most Popular Live Streams</h1>
+            <div className='row'>
+                {channels.map(channel => (
+                    <div className='col-lg-3 col-md-6 col-sm-12 mt-5'>
+                        <div className="card">
+                            <img className="card-img-top" src={channel.thumbnail_url} alt="Top Live Games" />
+                            <div className="card-body">
+                                <h3 className="card-title">{channel.user_name}</h3>
+                                <h5 className="card-text">{channel.gameName}</h5>
+                                <div className="card-text">
+                                    {channel.viewer_count} live viewers
+                                </div>
+                                <button className="btn btn-success">
+                                    <a
+                                        className="link"
+                                        href={"https://twitch.tv/" + channel.user_name}
+                                        target="_blank"
+                                    >
+                                        Watch {channel.user_name}'s channel
+                                    </a>
+                                </button>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    ))}                
+            </div>
+        </div>
+    );
 }
 
 export default Stream;

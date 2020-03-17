@@ -8,7 +8,7 @@ function GameStreams({ match, location }) {
     useEffect(() => {
        const fetchData = async () => {
            const result = await api.get(
-               `https://api.twitch.tv/helix/streams?game_id${location.state.gameID}`
+               `https://api.twitch.tv/helix/streams?game_id=${location.state.gameID}`
            );
            let dataArray = result.data.data
            let finalArray = dataArray.map(stream => {
@@ -38,7 +38,8 @@ function GameStreams({ match, location }) {
                         <div className="card">
                             <img className="card-img-top" src={stream.thumbnail_url} alt="Games" />
                             <div className="card-body">
-                                <h5 className="card-title">{stream.thumbnail_url}</h5>
+                                <h3 className="card-title">{stream.user_name}</h3>
+                                <h5 className="card-title">{stream.gameName}</h5>
                                 <button className="btn btn-success">
                                     <a
                                         className="link"
