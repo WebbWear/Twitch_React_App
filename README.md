@@ -1,3 +1,13 @@
+## Made this from tutorial on youtube account "Renaissance Troll":
+
+(https://www.youtube.com/watch?v=VTY6ZzDTV3A)
+and second video
+(https://www.youtube.com/watch?v=4FqIvnW0l5s)
+
+## Twitch.tv docs
+
+(https://dev.twitch.tv/docs/api)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
