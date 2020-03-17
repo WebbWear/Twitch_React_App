@@ -29,6 +29,7 @@ function Stream() {
                         return stream.gameName = name.name
                     }
                 })
+                
             })
         }
         fetchData();
