@@ -7,10 +7,19 @@ function Stream() {
         const fetchData = async () => {
             const result = await api.get('https://api.twitch.tv/helix/streams')
             let dataArray = result.data.data 
-            console.log(dataArray)
+            // console.log(dataArray)
+            let gameIDs = dataArray.map(stream => {
+                return stream.game_id;
+            })
+            // console.log(gameIDs)
+            let baseURL = 'https://api.twitch.tv/helix/games?'
+            let queryParams = ""
+            gameIDs.map(id => {
+                return (queryParams = queryParams + `id=${id}&`)
+            })
         }
         fetchData()
-    })
+    });
     return <div>streams component</div>
 }
 
