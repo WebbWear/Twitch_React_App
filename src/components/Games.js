@@ -26,7 +26,7 @@ function Games() {
             <h1>Most Popular Games</h1>
             <div className='row'>
                 {games.map(game => (
-                    <div className='col-lg-4 col-md-6 col-sm-12 mt-5'>
+                    <div className='col-lg-3 col-md-6 col-sm-12 mt-5'>
                         <div className="card">
                             <img className="card-img-top" src={game.box_art_url} alt="Games" />
                             <div className="card-body">

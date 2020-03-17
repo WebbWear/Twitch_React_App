@@ -34,7 +34,7 @@ function GameStreams({ match, location }) {
             </h3>
             <div className='row'>
                 {streamData.map(stream => (
-                    <div className='col-lg-4 col-md-6 col-sm-12 mt-5'>
+                    <div className='col-lg-3 col-md-6 col-sm-12 mt-5'>
                         <div className="card">
                             <img className="card-img-top" src={stream.thumbnail_url} alt="Games" />
                             <div className="card-body">
