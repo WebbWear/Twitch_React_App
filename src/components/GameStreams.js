@@ -45,6 +45,7 @@ function GameStreams({ match, location }) {
                                         className="link"
                                         href={"https://twitch.tv/" + stream.user_name}
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                     >
                                         Watch {stream.user_name}'s channel
                                     </a>

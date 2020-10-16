@@ -24,6 +24,7 @@ function Stream() {
 
             let finalArray = dataArray.map(stream => {
                 stream.gameName = "";
+                // eslint-disable-next-line
                 gameNameArray.map(name => {
                     if(stream.game_id === name.id) {
                         return (stream.gameName = name.name);
@@ -59,6 +60,7 @@ function Stream() {
                                         className="link"
                                         href={"https://twitch.tv/" + channel.user_name}
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                     >
                                         Watch {channel.user_name}'s channel
                                     </a>
